@@ -1,18 +1,3 @@
-# flutter_stickers_internet
+Json https://gist.githubusercontent.com/Georsh24/9653a587c3836ea8ef35d4470df6a861/raw/56427b20a21e06fd26e1068e695d293172082337/stickers_p.json
+de aqui se agarran las imagenes
 
-whatsapp stickers app using internet and with flutter
-
-## Current TODOs
-
-1) Add IOS Support
-2) Improve UI
-3) Add tests
-
-
-## HOW-TO-WIKI
-
-[Wiki](https://github.com/viztushar/flutter_whatsapp_stickers_internet/wiki)
-
-
-## For more help
-Join this [Whatsapp group](https://chat.whatsapp.com/GskUyZUgDpaE7aHBLOB4tS)
