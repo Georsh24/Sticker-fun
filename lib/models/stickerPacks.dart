@@ -21,15 +21,18 @@ class StickerPacks {
   List<Stickers> stickers;
 
   StickerPacks(
-      {this.identifier,
-      this.name,
-      this.publisher,
-      this.trayimagefile,
-      this.publisheremail,
-      this.publisherwebsite,
-      this.privacypolicywebsite,
-      this.licenseagreementwebsite,
-      this.stickers});
+      {
+       this.identifier ='',
+       this.name = '',
+       this.publisher = '',
+       this.trayimagefile = '',
+       this.publisheremail = '',
+       this.publisherwebsite = '',
+       this.privacypolicywebsite = '',
+       this.licenseagreementwebsite = '',
+       required this.stickers 
+       
+       });
 
   factory StickerPacks.fromJson(Map<String, dynamic> json) =>
       _$StickerPacksFromJson(json);

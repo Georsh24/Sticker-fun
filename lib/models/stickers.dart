@@ -7,7 +7,7 @@ class Stickers {
   String imagefile;
   List emojis;
 
-  Stickers({this.imagefile,this.emojis});
+  Stickers({required this.imagefile, required this.emojis});
 
   factory Stickers.fromJson(Map<String, dynamic> json) =>
       _$StickersFromJson(json);

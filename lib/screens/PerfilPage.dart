@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stickers_internet/widget/change_theme_button_widget.dart';
+import 'package:flutter_stickers_internet/widgets/change_theme_button_widget.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 

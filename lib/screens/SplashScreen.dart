@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stickers_internet/ui/HomeScreen.dart';
+import 'package:flutter_stickers_internet/screens/login_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 
@@ -13,8 +13,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Future.delayed(Duration(seconds: 40), (){
-    //   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    // Future.delayed(Duration(seconds: 2), (){
+    //    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+       
     // });
   }
 
@@ -73,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
                   child: Row(
                     children: [
@@ -82,18 +83,18 @@ class _SplashScreenState extends State<SplashScreen> {
                     ],
                   ),
                 )
-                // // Container(
-                // //   width: 300,    
-                // //   // child: ElevatedButton(
-                // //   //   child: Text('Bienvenido'),   
-                // //   //   onPressed: (){
-                // //   //     Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-                // //   //   },       
-                // //   //   )    
-                //     ),
+          //       // // Container(
+          //       // //   width: 300,    
+          //       // //   // child: ElevatedButton(
+          //       // //   //   child: Text('Bienvenido'),   
+          //       // //   //   onPressed: (){
+          //       // //   //     Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          //       // //   //   },       
+          //       // //   //   )    
+          //       //     ),
               ],
-            ),
-          ),
+             ),
+           ),
         ],
       ),
     );

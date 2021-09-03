@@ -1,6 +1,6 @@
 //import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stickers_internet/ui/HomePage.dart';
+import 'package:flutter_stickers_internet/screens/HomePage.dart';
 
 import 'MyStickers.dart';
 import 'PerfilPage.dart';
@@ -18,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
 int currentPage = 0; // index o tab inicial osea MyHomepage()
-List <Widget> _Paginas = <Widget>[
+List <Widget> _paginas = <Widget>[
 
 //como esten ordenadas aqui las paginas estaran en las tabs son como urls
 MyHomePage(),
@@ -38,7 +38,7 @@ void onItemTab(int index){
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: _Paginas.elementAt(currentPage)),
+      body: Center(child: _paginas.elementAt(currentPage)),
       //botones de navegacion osea tabs
       bottomNavigationBar:  BottomNavigationBar(
       currentIndex: currentPage,

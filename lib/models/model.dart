@@ -3,13 +3,13 @@
 
 class Model {
 
-  String androidplaystorelink;
+  String androidplaystorelink = '';
   List stickerPack;
 
   Model(
     {
-      this.androidplaystorelink,
-      this.stickerPack
+      required this.androidplaystorelink,
+      required this.stickerPack
     }
   );
 
@@ -24,7 +24,7 @@ class Model {
     this.stickerPack = stickerPack;
   }
 
-  factory Model.formJson(Map<String, dynamic> json){
+  factory Model.formJson(Map<dynamic, dynamic> json){
     return Model(
         androidplaystorelink: json['android_play_store_link'],
         stickerPack: json['sticker_packs']

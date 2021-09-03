@@ -16,22 +16,8 @@ StickerPacks _$StickerPacksFromJson(Map<String, dynamic> json) {
       publisherwebsite: json['publisher_website'] as String,
       privacypolicywebsite: json['privacy_policy_website'] as String,
       licenseagreementwebsite: json['license_agreement_website'] as String,
-      stickers: (json['stickers'] as List)
-          ?.map((e) =>
-              e == null ? null : Stickers.fromJson(e as Map<String, dynamic>))
-          ?.toList())
-    ..identiFier = json['identiFier'] as String
-    ..names = json['names'] as String
-    ..publishers = json['publishers'] as String
-    ..trayImageFile = json['trayImageFile'] as String
-    ..publisherEmail = json['publisherEmail'] as String
-    ..publisherWebsite = json['publisherWebsite'] as String
-    ..privacyPolicyWebsite = json['privacyPolicyWebsite'] as String
-    ..licenseAgreementWebsite = json['licenseAgreementWebsite'] as String
-    ..sticker = (json['sticker'] as List)
-        ?.map((e) =>
-            e == null ? null : Stickers.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+      stickers: (json['stickers'] )
+  );
 }
 
 Map<String, dynamic> _$StickerPacksToJson(StickerPacks instance) =>

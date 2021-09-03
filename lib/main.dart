@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 //import 'package:trendy_stickers/provider/theme_provider.dart';
 
 import 'provider/theme_provider.dart';
-import 'ui/SplashScreen.dart';
+import 'screens/SplashScreen.dart';
 //import 'ui/HomePage.dart';
 
 void main() => runApp(MyApp());

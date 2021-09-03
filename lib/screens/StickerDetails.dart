@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:dio/dio.dart' as di;
 import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -12,24 +11,24 @@ import 'package:path/path.dart';
 
 class MyStickerDetails extends StatefulWidget {
   final StickerPacks stickerPacks;
-  MyStickerDetails({this.stickerPacks}) : super();
+  MyStickerDetails({required this.stickerPacks}) : super();
   @override
   _MyStickerDetailsState createState() => _MyStickerDetailsState();
 }
 
 class _MyStickerDetailsState extends State<MyStickerDetails> {
-  bool isLoading, isDownloading = true;
-  List<String> downloadList = List<String>();
-  List<String> stickerImageList = List<String>();
+  bool isLoading = true, isDownloading = true;
+  List<String> downloadList = [];
+  List<String> stickerImageList = [];
   static const MethodChannel stickerMethodChannel = const MethodChannel(
       'com.viztushar.flutter.flutter_stickers_internet/sharedata');
 
   @override
   Widget build(BuildContext context) {
 
-final text = Theme.of(context).brightness == Brightness.dark
-    ? 'Negro Logo'
-    : 'Blanco Logo';
+// final text = Theme.of(context).brightness == Brightness.dark
+//     ? 'Negro Logo'
+//     : 'Blanco Logo';
       final logoimg = Theme.of(context).brightness == Brightness.dark
     ? 'assets/logoblack.png'
     : 'assets/logowhite.png';
@@ -203,24 +202,24 @@ Future<void> addToWhatsapp(StickerPacks s) async {
 
   Future<void> downloadSticker(StickerPacks s,context) async {
     showDialogs(context);
-    if (s.publisherEmail == null) s.publisherEmail = "0";
-    print((s.publisherEmail == null).toString() +
-        s.identiFier +
-        " " +
-        s.name +
-        " " +
-        s.publisher +
-        " " +
-        s.trayImageFile +
-        " " +
-        s.publisherEmail +
-        " " +
-        s.publisherWebsite +
-        " " +
-        s.privacyPolicyWebsite +
-        " " +
-        s.licenseAgreementWebsite.contains("").toString() +
-        " ");
+    // if (s.publisherEmail == null) s.publisherEmail = "0";
+    // print((s.publisherEmail == null).toString() +
+    //     s.identiFier +
+    //     " " +
+    //     s.name +
+    //     " " +
+    //     s.publisher +
+    //     " " +
+    //     s.trayImageFile +
+    //     " " +
+    //     s.publisherEmail +
+    //     " " +
+    //     s.publisherWebsite +
+    //     " " +
+    //     s.privacyPolicyWebsite +
+    //     " " +
+    //     s.licenseAgreementWebsite.contains("").toString() +
+    //     " ");
 
     stickerImageList.clear();
     if (!downloadList.contains(s.identiFier)) {

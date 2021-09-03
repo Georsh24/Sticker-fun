@@ -25,12 +25,12 @@ class _MyHomePageState extends State<MyHomePage> {
       //url del jsnon
   final String url =
       'https://gist.githubusercontent.com/Georsh24/9653a587c3836ea8ef35d4470df6a861/raw/56427b20a21e06fd26e1068e695d293172082337/stickers_p.json';
-  StickerPacks stickerPack = StickerPacks();
-  List<StickerPacks> st = List<StickerPacks>();
-  bool isLoading, isDownloading = true;
+  //StickerPacks stickerPack = StickerPacks();
+  List<StickerPacks> st = [];
+  bool isLoading = false, isDownloading = true;
   int iD = -1;
-  List<String> downloadList = List<String>();
-  List<String> stickerImageList = List<String>();
+  List<String> downloadList = [];
+  List<String> stickerImageList = [];
   @override
   void initState() {
     super.initState();
@@ -41,14 +41,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   Future getJsonData() async {
     var response = await http.get(
-      Uri.encodeFull(url),
+      Uri.parse(url),
       headers: {"Accept": "application/json"},
     );
     setState(() {
       Map datas = jsonDecode(response.body);
       Model m = Model.formJson(datas);
       for (Map<String, dynamic> json in m.stickerPac) {
-        List<Stickers> s = List<Stickers>();
+        List<Stickers> s = [];
         for (Map<String, dynamic> stickers in json['stickers']) {
           s.add(Stickers(
               imagefile: stickers['image_file'], emojis: stickers['emojis']));
@@ -264,24 +264,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> downloadSticker(StickerPacks s) async {
-    if (s.publisherEmail == null) s.publisherEmail = "0";
-    print((s.publisherEmail == null).toString() +
-        s.identiFier +
-        " " +
-        s.name +
-        " " +
-        s.publisher +
-        " " +
-        s.trayImageFile +
-        " " +
-        s.publisherEmail +
-        " " +
-        s.publisherWebsite +
-        " " +
-        s.privacyPolicyWebsite +
-        " " +
-        s.licenseAgreementWebsite.contains("").toString() +
-        " ");
+    // if (s.publisherEmail == null) s.publisherEmail = "0";
+    // print((s.publisherEmail == null).toString() +
+    //     s.identiFier +
+    //     " " +
+    //     s.name +
+    //     " " +
+    //     s.publisher +
+    //     " " +
+    //     s.trayImageFile +
+    //     " " +
+    //     s.publisherEmail +
+    //     " " +
+    //     s.publisherWebsite +
+    //     " " +
+    //     s.privacyPolicyWebsite +
+    //     " " +
+    //     s.licenseAgreementWebsite.contains("").toString() +
+    //     " ");
 
     stickerImageList.clear();
     if (!downloadList.contains(s.identiFier)) {
