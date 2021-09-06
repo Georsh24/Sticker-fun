@@ -63,42 +63,14 @@ final liquidPages = [
             ),
           ),
         ),
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 10,
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.topRight,
-                    stops: [
-                      0.1,
-                      0.80,
-                    ],
-                    colors: [
-                      HexColor('00ff00'),
-                      HexColor('05d0ae'),
-                    ])),
-            child: MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                disabledColor: Colors.grey,
-                elevation: 0,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                  child: Text(
-                    'hola',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                ),
-                onPressed: () {}),
-          ),
-        )
+      
+        MaterialButton(
+          child: Text('Comecemos'),
+          onPressed: (){
+            
+          })
+      
+     
       ],
     ),
   ),
