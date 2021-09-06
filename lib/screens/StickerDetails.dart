@@ -25,54 +25,42 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
 
   @override
   Widget build(BuildContext context) {
-
-// final text = Theme.of(context).brightness == Brightness.dark
-//     ? 'Negro Logo'
-//     : 'Blanco Logo';
-      final logoimg = Theme.of(context).brightness == Brightness.dark
-    ? 'assets/logoblack.png'
-    : 'assets/logowhite.png';
+    final logoimg = Theme.of(context).brightness == Brightness.dark
+        ? 'assets/logoblack.png'
+        : 'assets/logowhite.png';
 
     return Scaffold(
-      
-appBar: AppBar(
+      appBar: AppBar(
         brightness: Brightness.dark,
         toolbarHeight: 100,
         automaticallyImplyLeading: false,
         centerTitle: true,
-       //title:  Image.asset('assets/logowhite.png', fit: BoxFit.contain, height: 50,),
-        title:  Image.asset('$logoimg', fit: BoxFit.contain, height: 50,),
-      flexibleSpace: Container(
-         decoration: BoxDecoration( 
-              gradient: LinearGradient(
+        title: Image.asset(
+          '$logoimg',
+          fit: BoxFit.contain,
+          height: 50,
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
                 begin: Alignment.topLeft,
-                end:  Alignment.topRight,
+                end: Alignment.topRight,
                 stops: [
                   0.1,
                   0.80,
                 ],
-                colors:[
+                colors: [
                   HexColor('00ff00'),
-                HexColor('05d0ae'),
-              ] ),
-              border: Border.all(
-                  color: Colors.transparent,
-                  width: 0,
-                ),
+                  HexColor('05d0ae'),
+                ]),
+            border: Border.all(
+              color: Colors.transparent,
+              width: 0,
             ),
+          ),
+        ),
+        elevation: 0.0,
       ),
-       elevation: 0.0,
-      ),
-
-      // appBar: AppBar(
-      //   title: Text(widget.stickerPacks.name),
-      //   actions: <Widget>[
-      //     IconButton(
-      //       icon: Icon(Icons.info_outline),
-      //       onPressed: () {},
-      //     ),
-      //   ],
-      // ),
       body: Container(
         padding: EdgeInsets.all(15.0),
         child: Column(
@@ -166,16 +154,17 @@ appBar: AppBar(
                               .contains(widget.stickerPacks.identiFier)) {
                             isDownloading = false;
                             print(isLoading);
-                            downloadSticker(widget.stickerPacks,context);
+                            downloadSticker(widget.stickerPacks, context);
                           } else if (downloadList
                               .contains(widget.stickerPacks.identiFier)) {
-                                            addToWhatsapp(widget.stickerPacks);
-                              }
+                            addToWhatsapp(widget.stickerPacks);
+                          }
                         },
                         color: Colors.black,
                         child: Text(
-                          downloadList
-                              .contains(widget.stickerPacks.identiFier) ? 'Add To WhatsApp' : "Download",
+                          downloadList.contains(widget.stickerPacks.identiFier)
+                              ? 'Add To WhatsApp'
+                              : "Download",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 18.0,
@@ -191,7 +180,7 @@ appBar: AppBar(
     );
   }
 
-Future<void> addToWhatsapp(StickerPacks s) async {
+  Future<void> addToWhatsapp(StickerPacks s) async {
     try {
       stickerMethodChannel.invokeMapMethod("addStickerPackToWhatsApp",
           {"identifier": s.identiFier, "name": s.name});
@@ -200,27 +189,8 @@ Future<void> addToWhatsapp(StickerPacks s) async {
     }
   }
 
-  Future<void> downloadSticker(StickerPacks s,context) async {
+  Future<void> downloadSticker(StickerPacks s, context) async {
     showDialogs(context);
-    // if (s.publisherEmail == null) s.publisherEmail = "0";
-    // print((s.publisherEmail == null).toString() +
-    //     s.identiFier +
-    //     " " +
-    //     s.name +
-    //     " " +
-    //     s.publisher +
-    //     " " +
-    //     s.trayImageFile +
-    //     " " +
-    //     s.publisherEmail +
-    //     " " +
-    //     s.publisherWebsite +
-    //     " " +
-    //     s.privacyPolicyWebsite +
-    //     " " +
-    //     s.licenseAgreementWebsite.contains("").toString() +
-    //     " ");
-
     stickerImageList.clear();
     if (!downloadList.contains(s.identiFier)) {
       await Permission.storage.request();
@@ -260,7 +230,7 @@ Future<void> addToWhatsapp(StickerPacks s) async {
       }
 
       try {
-         stickerMethodChannel.invokeMapMethod("addTOJson", {
+        stickerMethodChannel.invokeMapMethod("addTOJson", {
           "identiFier": s.identiFier,
           "name": s.name,
           "publisher": s.publisher,
@@ -274,7 +244,7 @@ Future<void> addToWhatsapp(StickerPacks s) async {
       } on PlatformException catch (e) {
         print(e.details);
       }
-     Navigator.of(context, rootNavigator: true).pop();
+      Navigator.of(context, rootNavigator: true).pop();
       setState(() {
         isDownloading = true;
         if (!downloadList.contains(s.identiFier)) {
@@ -286,7 +256,7 @@ Future<void> addToWhatsapp(StickerPacks s) async {
     }
   }
 
-Future<void> showDialogs(context) {
+  Future<void> showDialogs(context) {
     CupertinoAlertDialog s = CupertinoAlertDialog(
       content: Row(
         children: <Widget>[
@@ -315,10 +285,10 @@ Future<void> showDialogs(context) {
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        if(Platform.isAndroid)
-        return a;
+        if (Platform.isAndroid)
+          return a;
         else
-        return s;
+          return s;
       },
     );
   }

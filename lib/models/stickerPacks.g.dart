@@ -16,8 +16,7 @@ StickerPacks _$StickerPacksFromJson(Map<String, dynamic> json) {
       publisherwebsite: json['publisher_website'] as String,
       privacypolicywebsite: json['privacy_policy_website'] as String,
       licenseagreementwebsite: json['license_agreement_website'] as String,
-      stickers: (json['stickers'] )
-  );
+      stickers: (json['stickers']));
 }
 
 Map<String, dynamic> _$StickerPacksToJson(StickerPacks instance) =>

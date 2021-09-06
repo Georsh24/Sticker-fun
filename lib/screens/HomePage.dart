@@ -22,7 +22,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   static const MethodChannel stickerMethodChannel = const MethodChannel(
       'com.viztushar.flutter.flutter_stickers_internet/sharedata');
-      //url del jsnon
+  //url del jsnon
   final String url =
       'https://gist.githubusercontent.com/Georsh24/9653a587c3836ea8ef35d4470df6a861/raw/56427b20a21e06fd26e1068e695d293172082337/stickers_p.json';
   //StickerPacks stickerPack = StickerPacks();
@@ -39,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     iD = -1;
     this.getJsonData();
   }
+
   Future getJsonData() async {
     var response = await http.get(
       Uri.parse(url),
@@ -74,8 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
       }
       isLoading = false;
     });
-    
   }
+
   navigateToDetailsScreen(id, context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
       return MyStickerDetails(
@@ -83,13 +84,13 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     }));
   }
- 
+
   @override
   Widget build(BuildContext context) {
 //delcaracion al cambiar el brignes a dark cambia el logo en logoimge
-      final logoimg = Theme.of(context).brightness == Brightness.dark
-    ? 'assets/logoblack.png'
-    : 'assets/logowhite.png'; 
+    final logoimg = Theme.of(context).brightness == Brightness.dark
+        ? 'assets/logoblack.png'
+        : 'assets/logowhite.png';
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -98,27 +99,31 @@ class _MyHomePageState extends State<MyHomePage> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         //title:  Image.asset('assets/logowhite.png', fit: BoxFit.contain, height: 50,), se usa esta para asssets estatico
-        title:  Image.asset('$logoimg', fit: BoxFit.contain, height: 50,),
-      flexibleSpace: Container(
-         decoration: BoxDecoration( 
-              gradient: LinearGradient(
+        title: Image.asset(
+          '$logoimg',
+          fit: BoxFit.contain,
+          height: 50,
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
                 begin: Alignment.topLeft,
-                end:  Alignment.topRight,
+                end: Alignment.topRight,
                 stops: [
                   0.1,
                   0.80,
                 ],
-                colors:[
+                colors: [
                   HexColor('00ff00'),
-                HexColor('05d0ae'),
-              ] ),
-              border: Border.all(
-                  color: Colors.transparent,
-                  width: 0,
-                ),
+                  HexColor('05d0ae'),
+                ]),
+            border: Border.all(
+              color: Colors.transparent,
+              width: 0,
             ),
-      ),
-       elevation: 0.0,
+          ),
+        ),
+        elevation: 0.0,
       ),
       body: Container(
         child: Center(
@@ -130,29 +135,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     return Card(
                       //color: Colors.yellow,
                       child: Container(
-                    
                         padding: EdgeInsets.all(10.0),
                         child: Row(
-                          
                           children: <Widget>[
-                            
                             Container(
-                             // color: Colors.red,
+                              // color: Colors.red,
                               child: GestureDetector(
-                                
                                 onTap: () {
                                   navigateToDetailsScreen(i, context);
                                 },
                                 child: Column(
-                                  
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     Row(
-                                      
                                       children: <Widget>[
-                                        
                                         Text(
                                           st[i].name,
                                           style: TextStyle(
@@ -218,33 +216,22 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                       ],
                                     ),
-                                    
                                   ],
-                                  
                                 ),
-                                
                               ),
                             ),
-
-                           
-                              Container(
-                                width: size.width *0.2,
+                            Container(
+                              width: size.width * 0.2,
                               //color: Colors.blue,
                               child: IconButton(
-                                iconSize: size.width *0.07,
+                                iconSize: size.width * 0.07,
                                 alignment: Alignment.centerRight,
                                 icon: Icon(Icons.favorite_border_outlined),
-                                onPressed: (){
-
-                                },
-                               ),
+                                onPressed: () {},
+                              ),
                             ),
-                            
                           ],
-                          
                         ),
-
-
                       ),
                     );
                   },
@@ -253,6 +240,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
 // si ya funciona no le mueva a partir de aqui se hace la descarga y añaade sticker to whatssap algun problema ir mainactivity.kt
   Future<void> addToWhatsapp(StickerPacks s) async {
     try {
@@ -264,25 +252,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> downloadSticker(StickerPacks s) async {
-    // if (s.publisherEmail == null) s.publisherEmail = "0";
-    // print((s.publisherEmail == null).toString() +
-    //     s.identiFier +
-    //     " " +
-    //     s.name +
-    //     " " +
-    //     s.publisher +
-    //     " " +
-    //     s.trayImageFile +
-    //     " " +
-    //     s.publisherEmail +
-    //     " " +
-    //     s.publisherWebsite +
-    //     " " +
-    //     s.privacyPolicyWebsite +
-    //     " " +
-    //     s.licenseAgreementWebsite.contains("").toString() +
-    //     " ");
-
     stickerImageList.clear();
     if (!downloadList.contains(s.identiFier)) {
       await Permission.storage.request();

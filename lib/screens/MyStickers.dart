@@ -8,22 +8,18 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../models/stickerPacks.dart';
 import '../models/stickers.dart';
-import '../models/model.dart';
+import '../models/Model.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'StickerDetails.dart';
 import 'package:dio/dio.dart';
-class MyStickers extends StatefulWidget {
-  
 
+class MyStickers extends StatefulWidget {
   @override
   _MyStickersState createState() => _MyStickersState();
 }
 
 class _MyStickersState extends State<MyStickers> {
-
-
-
   static const MethodChannel stickerMethodChannel = const MethodChannel(
       'com.viztushar.flutter.flutter_stickers_internet/sharedata');
   final String url =
@@ -45,7 +41,7 @@ class _MyStickersState extends State<MyStickers> {
   // @override
   // void dispose(){
   //   super.dispose();
-    
+
   // }
 
   Future getJsonData() async {
@@ -82,11 +78,8 @@ class _MyStickersState extends State<MyStickers> {
             stickers: s));
       }
       isLoading = false;
-    
     });
-    
   }
-  
 
   navigateToDetailsScreen(id, context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
@@ -95,56 +88,43 @@ class _MyStickersState extends State<MyStickers> {
       );
     }));
   }
- 
-
 
   @override
   Widget build(BuildContext context) {
-    // final text = Theme.of(context).brightness == Brightness.dark
-    // ? 'Negro Logo'
-    // : 'Blanco Logo';
-      final logoimg = Theme.of(context).brightness == Brightness.dark
-    ? 'assets/logoblack.png'
-    : 'assets/logowhite.png';
-    
-    
-
-
-  //String logoimg = '';
-
-  //final logoimg = Brightness.dark == Brightness.dark ?'assets/logoblack.png' :'assets/logowhite.png';
-    
+    final logoimg = Theme.of(context).brightness == Brightness.dark
+        ? 'assets/logoblack.png'
+        : 'assets/logowhite.png';
     return Scaffold(
       appBar: AppBar(
-        //brightness: Brightness.light,
         systemOverlayStyle: SystemUiOverlayStyle.dark,
         toolbarHeight: 100,
         automaticallyImplyLeading: false,
         centerTitle: true,
-        
-        //title:  Image.asset('assets/logowhite.png', fit: BoxFit.contain, height: 50,),
-        title:  Image.asset('$logoimg', fit: BoxFit.contain, height: 50,),
-        
-      flexibleSpace: Container(
-         decoration: BoxDecoration( 
-              gradient: LinearGradient(
+        title: Image.asset(
+          '$logoimg',
+          fit: BoxFit.contain,
+          height: 50,
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
                 begin: Alignment.topLeft,
-                end:  Alignment.topRight,
+                end: Alignment.topRight,
                 stops: [
                   0.1,
                   0.80,
                 ],
-                colors:[
+                colors: [
                   HexColor('00ff00'),
-                HexColor('05d0ae'),
-              ] ),
-              border: Border.all(
-                  color: Colors.transparent,
-                  width: 0,
-                ),
+                  HexColor('05d0ae'),
+                ]),
+            border: Border.all(
+              color: Colors.transparent,
+              width: 0,
             ),
-      ),
-       elevation: 0.0,
+          ),
+        ),
+        elevation: 0.0,
       ),
       body: Container(
         child: Center(
@@ -286,10 +266,9 @@ class _MyStickersState extends State<MyStickers> {
         ),
       ),
     );
-    
   }
 
-Future<void> addToWhatsapp(StickerPacks s) async {
+  Future<void> addToWhatsapp(StickerPacks s) async {
     try {
       stickerMethodChannel.invokeMapMethod("addStickerPackToWhatsApp",
           {"identifier": s.identiFier, "name": s.name});
@@ -299,25 +278,6 @@ Future<void> addToWhatsapp(StickerPacks s) async {
   }
 
   Future<void> downloadSticker(StickerPacks s) async {
-    // if (s.publisherEmail == null) s.publisherEmail = "0";
-    // print((s.publisherEmail == null).toString() +
-    //     s.identiFier +
-    //     " " +
-    //     s.name +
-    //     " " +
-    //     s.publisher +
-    //     " " +
-    //     s.trayImageFile +
-    //     " " +
-    //     s.publisherEmail +
-    //     " " +
-    //     s.publisherWebsite +
-    //     " " +
-    //     s.privacyPolicyWebsite +
-    //     " " +
-    //     s.licenseAgreementWebsite.contains("").toString() +
-    //     " ");
-
     stickerImageList.clear();
     if (!downloadList.contains(s.identiFier)) {
       await Permission.storage.request();
@@ -401,7 +361,4 @@ Future<void> addToWhatsapp(StickerPacks s) async {
       },
     );
   }
-
-
-
 }
