@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_stickers_internet/screens/LoginScreen.dart';
-import 'package:flutter_stickers_internet/widgets/LiquidPages.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:liquid_swipe/liquid_swipe.dart';
+
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key? key}) : super(key: key);

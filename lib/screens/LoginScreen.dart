@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stickers_internet/provider/loginFormProvider.dart';
-import 'package:flutter_stickers_internet/screens/HomeScreen.dart';
 import 'package:flutter_stickers_internet/services/Services.dart';
 import 'package:flutter_stickers_internet/ui/InputDecoration.dart';
 import 'package:flutter_stickers_internet/widgets/Widgets.dart';

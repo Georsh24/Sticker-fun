@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stickers_internet/screens/HomeScreen.dart';
 import 'package:flutter_stickers_internet/screens/SplashScreen.dart';
-import 'package:flutter_stickers_internet/screens/LoginScreen.dart';
 import 'package:flutter_stickers_internet/services/Services.dart';
 
 import 'package:provider/provider.dart';
