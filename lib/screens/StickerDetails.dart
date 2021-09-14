@@ -150,6 +150,10 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                       child: RaisedButton(
                         padding: EdgeInsets.all(15.0),
                         onPressed: () {
+
+                           // downloadSticker(widget.stickerPacks, context);
+
+
                           if (!downloadList
                               .contains(widget.stickerPacks.identiFier)) {
                             isDownloading = false;
@@ -161,10 +165,10 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                           }
                         },
                         color: Colors.black,
-                        child: Text(
-                          downloadList.contains(widget.stickerPacks.identiFier)
-                              ? 'Add To WhatsApp'
-                              : "Download",
+                        child: Text( 'Add to WhatsApp',
+                          // downloadList.contains(widget.stickerPacks.identiFier)
+                          //     ? 'Add To WhatsApp'
+                          //     : "Download",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 18.0,
