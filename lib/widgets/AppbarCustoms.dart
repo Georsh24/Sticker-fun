@@ -5,7 +5,6 @@ class AppbarCustoms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      brightness: Brightness.dark,
       toolbarHeight: 100,
       automaticallyImplyLeading: false,
       centerTitle: true,

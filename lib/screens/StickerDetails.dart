@@ -31,7 +31,7 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
 
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.dark,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
         toolbarHeight: 100,
         automaticallyImplyLeading: false,
         centerTitle: true,

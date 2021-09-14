@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.dark,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
         toolbarHeight: 100,
         automaticallyImplyLeading: false,
         centerTitle: true,
