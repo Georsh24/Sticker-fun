@@ -64,23 +64,45 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
       body: Container(
         padding: EdgeInsets.all(15.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+        
           children: <Widget>[
             Flexible(
-              flex: 1,
-              fit: FlexFit.loose,
+              
+             flex: 5,
               child: Container(
+                color: Colors.red,
                 child: Row(
                   children: <Widget>[
-                    Image.network(
-                      widget.stickerPacks.trayImageFile,
-                      height: 50,
-                      width: 50,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(15.0, 0.0, 0.0, 15.0),
-                    ),
+                      Container(
+                        height: 100,
+                        width: 100,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(200),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Colors.white,
+                                              blurRadius: 5,
+                                              spreadRadius: -8),
+                                        ],
+                                        image: DecorationImage(
+                                          //image:
+                                              //NetworkImage(st[i].trayimagefile),
+                                          image:
+                                              AssetImage('assets/Sticker7.png'),
+                                          fit: BoxFit.cover,
+                                        )),
+                                    // children: [
+                                    //   Image.asset('assets/Sticker7.png', height: 85,)
+                                    // ],
+                                  ),
+                  
+                    // Image.network(
+                    //   widget.stickerPacks.trayImageFile,
+                    //   height: 50,
+                    //   width: 50,
+                    // ),
+                   
                     Text(
                       widget.stickerPacks.name,
                       style: TextStyle(
@@ -92,35 +114,37 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                 ),
               ),
             ),
+            // Flexible(
+            //   flex: 1,
+            //   fit: FlexFit.loose,
+            //   child: Container(
+            //     color: Colors.blue,
+            //     child: Column(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       crossAxisAlignment: CrossAxisAlignment.center,
+            //       children: <Widget>[
+            //         Padding(
+            //           padding: EdgeInsets.fromLTRB(50.0, 2.0, 10.0, 0.0),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(left: 60.0),
+            //           child: Text(
+            //             widget.stickerPacks.publisher,
+            //             style: TextStyle(
+            //               fontSize: 18.0,
+            //               fontWeight: FontWeight.normal,
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             Flexible(
-              flex: 1,
-              fit: FlexFit.loose,
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(50.0, 2.0, 10.0, 0.0),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 60.0),
-                      child: Text(
-                        widget.stickerPacks.publisher,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Flexible(
-              flex: 8,
+              flex: 25,
               fit: FlexFit.tight,
               child: Container(
+                color: Colors.yellow,
                 child: GridView.builder(
                   shrinkWrap: false,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -141,7 +165,7 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
               ),
             ),
             Flexible(
-              flex: 1,
+              flex: 2,
               fit: FlexFit.tight,
               child: Container(
                 child: Align(

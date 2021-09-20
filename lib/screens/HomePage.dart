@@ -23,8 +23,9 @@ class _MyHomePageState extends State<MyHomePage> {
   static const MethodChannel stickerMethodChannel = const MethodChannel(
       'com.viztushar.flutter.flutter_stickers_internet/sharedata');
   //url del jsnon
-  final String url =
-      'https://gist.githubusercontent.com/Georsh24/9653a587c3836ea8ef35d4470df6a861/raw/56427b20a21e06fd26e1068e695d293172082337/stickers_p.json';
+  final String url = 'https://gist.githubusercontent.com/Georsh24/9653a587c3836ea8ef35d4470df6a861/raw/56427b20a21e06fd26e1068e695d293172082337/stickers_p.json';
+  //'http://10.0.2.2:8000/api/tasks';
+  
   //StickerPacks stickerPack = StickerPacks();
   List<StickerPacks> st = [];
   bool isLoading = false, isDownloading = true;
@@ -133,107 +134,224 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemCount: st.length,
                   itemBuilder: (context, i) {
                     return Card(
-                      //color: Colors.yellow,
                       child: Container(
-                        padding: EdgeInsets.all(10.0),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              // color: Colors.red,
-                              child: GestureDetector(
-                                onTap: () {
-                                  navigateToDetailsScreen(i, context);
-                                },
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 1, vertical: 7),
+                        child: GestureDetector(
+                          onTap: () {
+                            navigateToDetailsScreen(i, context);
+                          },
+                          child: Row(
+                            children: [
+                              Container(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(200),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Colors.white,
+                                              blurRadius: 5,
+                                              spreadRadius: -8),
+                                        ],
+                                        image: DecorationImage(
+                                          image:
+                                              NetworkImage(st[i].trayimagefile),
+                                          // image:
+                                          //     AssetImage('assets/Sticker7.png'),
+                                          fit: BoxFit.cover,
+                                        )),
+                                    // children: [
+                                    //   Image.asset('assets/Sticker7.png', height: 85,)
+                                    // ],
+                                  ),
+                                  height: 100,
+                                  width: size.width * 0.20,
+                                  color: Colors.transparent,
+                                  margin: EdgeInsets.only(right: 5, left: 7)),
+                              Flexible(
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        Text(
-                                          st[i].name,
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.bold,
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            height: 25,
+                                            child: Text(
+                                              st[i].name,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                              overflow: TextOverflow.clip,
+                                              maxLines: 1,
+                                              softWrap: true,
+                                            ),
+                                            margin: EdgeInsets.only(right: 10),
                                           ),
-                                        ),
-                                        Text(
-                                          ' • ',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.normal,
+                                          Container(
+                                            height: 25,
+                                            child: Text('*'),
+                                            margin: EdgeInsets.only(right: 10),
                                           ),
-                                        ),
-                                        Text(
-                                          st[i].publisher,
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ],
+                                          Container(
+                                              height: 25,
+                                              child: Text(st[i].publisherEmail,
+                                                  overflow: TextOverflow.clip,
+                                                  maxLines: 1,
+                                                  softWrap: true)),
+                                        ],
+                                      ),
                                     ),
-                                    Wrap(
-                                      alignment: WrapAlignment.start,
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.center,
-                                      direction: Axis.horizontal,
-                                      spacing: 8.0,
-                                      runSpacing: 4.0,
-                                      children: <Widget>[
-                                        Row(
-                                          children: <Widget>[
-                                            Image.network(
-                                              st[i].sticker[0].imagefile,
-                                              height: 70.0,
-                                              width: 70.0,
-                                            ),
-                                            Image.network(
-                                              st[i].sticker[1].imageFile,
-                                              height: 70.0,
-                                              width: 70.0,
-                                            ),
-                                            Image.network(
-                                              st[i].sticker[2].imageFile,
-                                              height: 70.0,
-                                              width: 70.0,
-                                            ),
-                                            st[i].sticker.length > 3
-                                                ? Image.network(
-                                                    st[i].sticker[3].imageFile,
-                                                    height: 70.0,
-                                                    width: 70.0,
-                                                  )
-                                                : SizedBox(
-                                                    width: 70.0,
-                                                    height: 70.0,
-                                                  ),
-                                          ],
-                                        ),
-                                      ],
+                                    Container(
+                                      child: Text(
+                                        'Este es el texto de prueba jhbedwu euhduwih dbewduwebdebf hedueiu iudhedhu iuehded uihufwefb uihefu hjedwr hwhfb  ',
+                                        overflow: TextOverflow.clip,
+                                        maxLines: 3,
+                                        softWrap: true,
+                                      ),
+                                      width: size.width * 0.55,
+                                      margin: EdgeInsets.only(right: 5),
                                     ),
+                                    
                                   ],
                                 ),
                               ),
-                            ),
-                            Container(
-                              width: size.width * 0.2,
-                              //color: Colors.blue,
-                              child: IconButton(
-                                iconSize: size.width * 0.07,
-                                alignment: Alignment.centerRight,
-                                icon: Icon(Icons.favorite_border_outlined),
-                                onPressed: () {},
-                              ),
-                            ),
-                          ],
+                              Column(
+                                children: 
+                                  [
+                                    Container(
+                                    child: IconButton(
+                                      iconSize: size.width * 0.1,
+                                      icon: Icon(Icons.favorite_border_outlined),
+                                      onPressed: () {},
+                                    ),
+                                    height: 60,
+                                    width: size.width * 0.18,
+                                  ),
+                                   Container(
+                                      child: Text(
+                                        st[i].publisher, style: TextStyle(fontSize: 9),
+                                        overflow: TextOverflow.clip,
+                                        maxLines: 3,
+                                        softWrap: true,
+                                      ),
+                                      width: size.width * 0.1,
+                                      margin: EdgeInsets.only(right: 5),
+                                    ),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
+                        height: 100,
+                        color: Colors.black12,
+                        width: double.infinity,
                       ),
                     );
+
+                    // return Card(
+                    //   //color: Colors.yellow,
+                    //   child: Container(
+                    //     padding: EdgeInsets.all(10.0),
+                    //     child: Row(
+                    //       children: <Widget>[
+                    //         Container(
+                    //           // color: Colors.red,
+                    //           child: GestureDetector(
+                    //             onTap: () {
+                    //               navigateToDetailsScreen(i, context);
+                    //             },
+                    //             child: Column(
+                    //               crossAxisAlignment: CrossAxisAlignment.start,
+                    //               mainAxisAlignment:
+                    //                   MainAxisAlignment.spaceAround,
+                    //               children: <Widget>[
+                    //                 Row(
+                    //                   children: <Widget>[
+                    //                     Text(
+                    //                       st[i].name,
+                    //                       style: TextStyle(
+                    //                         color: Colors.black,
+                    //                         fontSize: 18.0,
+                    //                         fontWeight: FontWeight.bold,
+                    //                       ),
+                    //                     ),
+                    //                     Text(
+                    //                       ' • ',
+                    //                       style: TextStyle(
+                    //                         color: Colors.black,
+                    //                         fontSize: 16.0,
+                    //                         fontWeight: FontWeight.normal,
+                    //                       ),
+                    //                     ),
+                    //                     Text(
+                    //                       st[i].publisher,
+                    //                       style: TextStyle(
+                    //                         color: Colors.black,
+                    //                         fontSize: 16.0,
+                    //                         fontWeight: FontWeight.normal,
+                    //                       ),
+                    //                     ),
+                    //                   ],
+                    //                 ),
+                    //                 Image.network(st[i].trayimagefile),
+                    //                 // Wrap(
+                    //                 //   alignment: WrapAlignment.start,
+                    //                 //   crossAxisAlignment:
+                    //                 //       WrapCrossAlignment.center,
+                    //                 //   direction: Axis.horizontal,
+                    //                 //   spacing: 8.0,
+                    //                 //   runSpacing: 4.0,
+                    //                 //   children: <Widget>[
+                    //                 //     Row(
+                    //                 //       children: <Widget>[
+                    //                 //         Image.network(
+                    //                 //           st[i].sticker[0].imagefile,
+                    //                 //           height: 70.0,
+                    //                 //           width: 70.0,
+                    //                 //         ),
+                    //                 //         Image.network(
+                    //                 //           st[i].sticker[1].imageFile,
+                    //                 //           height: 70.0,
+                    //                 //           width: 70.0,
+                    //                 //         ),
+                    //                 //         Image.network(
+                    //                 //           st[i].sticker[2].imageFile,
+                    //                 //           height: 70.0,
+                    //                 //           width: 70.0,
+                    //                 //         ),
+                    //                 //         st[i].sticker.length > 3
+                    //                 //             ? Image.network(
+                    //                 //                 st[i].sticker[3].imageFile,
+                    //                 //                 height: 70.0,
+                    //                 //                 width: 70.0,
+                    //                 //               )
+                    //                 //             : SizedBox(
+                    //                 //                 width: 70.0,
+                    //                 //                 height: 70.0,
+                    //                 //               ),
+                    //                 //       ],
+                    //                 //     ),
+                    //                 //   ],
+                    //                 // ),
+                    //               ],
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         Container(
+                    //           width: size.width * 0.2,
+                    //           //color: Colors.blue,
+                    //           child: IconButton(
+                    //             iconSize: size.width * 0.07,
+                    //             alignment: Alignment.centerRight,
+                    //             icon: Icon(Icons.favorite_border_outlined),
+                    //             onPressed: () {},
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // );
                   },
                 ),
         ),
