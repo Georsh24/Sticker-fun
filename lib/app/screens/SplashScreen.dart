@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_stickers_internet/screens/LoginScreen.dart';
+import 'package:flutter_stickers_internet/app/screens/LoginScreen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 

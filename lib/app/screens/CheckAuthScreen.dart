@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stickers_internet/screens/HomeScreen.dart';
-import 'package:flutter_stickers_internet/screens/SplashScreen.dart';
-import 'package:flutter_stickers_internet/services/Services.dart';
+import 'package:flutter_stickers_internet/app/services/AuthService.dart';
+
 
 import 'package:provider/provider.dart';
+
+import 'HomeScreen.dart';
+import 'SplashScreen.dart';
 
 class CheckAuthScreen extends StatelessWidget {
   @override

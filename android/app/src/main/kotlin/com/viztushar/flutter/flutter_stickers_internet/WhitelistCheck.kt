@@ -48,7 +48,7 @@ object WhitelistCheck {
         return false
     }
 
-    fun isPackageInstalled(packageName: String?, packageManager: PackageManager): Boolean {
+    fun isPackageInstalled(packageName: String, packageManager: PackageManager): Boolean {
         return try {
             val applicationInfo = packageManager.getApplicationInfo(packageName, 0)
             applicationInfo?.enabled ?: false

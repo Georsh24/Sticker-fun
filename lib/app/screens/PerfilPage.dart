@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stickers_internet/services/Services.dart';
-import 'package:flutter_stickers_internet/widgets/ChangeThemeButtonWidget.dart';
+import 'package:flutter_stickers_internet/app/services/AuthService.dart';
+import 'package:flutter_stickers_internet/app/ui/global_controllers/session_controller.dart';
+import 'package:flutter_stickers_internet/app/ui/routes/routes.dart';
+import 'package:flutter_stickers_internet/app/widgets/ChangeThemeButtonWidget.dart';
+
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_meedu/router.dart' as router;
 
 class PerfilPage extends StatefulWidget {
   @override
@@ -169,9 +173,11 @@ Widget settings(BuildContext context) {
             title: Text('Terms of use'),
           ),
           ListTile(
-            onTap: () {
-              authService.logout();
-              Navigator.restorablePushNamed(context, 'splashscreen');
+            onTap: () async {
+      
+              await sessionProvider.read.signOut();
+               router.pushNamedAndRemoveUntil(Routes.LOGIN);
+              
             },
             leading: Icon(Icons.logout_outlined),
             title: Text('Logout '),

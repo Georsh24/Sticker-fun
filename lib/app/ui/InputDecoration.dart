@@ -9,7 +9,10 @@ class InputDecorations {
   }) {
     return InputDecoration(
         enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: HexColor('007c00'))),
+          borderSide: BorderSide(
+            color: HexColor('007c00'),
+          ),
+        ),
         focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
           color: HexColor('00ff00'),

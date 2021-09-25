@@ -1,6 +1,7 @@
 //import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stickers_internet/screens/HomePage.dart';
+
+import 'HomePage.dart';
 import 'MyStickers.dart';
 import 'PerfilPage.dart';
 

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stickers_internet/provider/loginFormProvider.dart';
-import 'package:flutter_stickers_internet/services/Services.dart';
-import 'package:flutter_stickers_internet/ui/InputDecoration.dart';
-import 'package:flutter_stickers_internet/widgets/widgets.dart';
+import 'package:flutter_stickers_internet/app/provider/loginFormProvider.dart';
+import 'package:flutter_stickers_internet/app/services/AuthService.dart';
+import 'package:flutter_stickers_internet/app/widgets/CardContainer.dart';
+import 'package:flutter_stickers_internet/app/widgets/auth_background.dart';
+import 'package:flutter_stickers_internet/app/ui/InputDecoration.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
