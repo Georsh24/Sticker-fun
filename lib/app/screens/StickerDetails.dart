@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:flutter_meedu/flutter_meedu.dart';
+import 'package:flutter_stickers_internet/app/ui/global_controllers/session_controller.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:dio/dio.dart' as di;
 import 'package:flutter/cupertino.dart';
@@ -8,7 +10,11 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../models/stickerPacks.dart';
 import 'package:path/path.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+FirebaseFirestore firestore = FirebaseFirestore.instance;
+String getuid = '';
+String getidcompra = '';
 class MyStickerDetails extends StatefulWidget {
   final StickerPacks stickerPacks;
   MyStickerDetails({required this.stickerPacks}) : super();
@@ -66,6 +72,22 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
         child: Column(
         
           children: <Widget>[
+
+
+ Consumer(
+              builder: (_, watch, __ ){
+               final user = watch(sessionProvider).user!;
+
+                getuid = user.uid;
+                getidcompra = widget.stickerPacks.identiFier;
+               return SizedBox.shrink();
+              
+              
+              },
+              ),
+              Container(
+                child: Text(widget.stickerPacks.identiFier),
+              ),
             Flexible(
               
              flex: 5,
@@ -86,23 +108,14 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                                               spreadRadius: -8),
                                         ],
                                         image: DecorationImage(
-                                          //image:
-                                              //NetworkImage(st[i].trayimagefile),
                                           image:
-                                              AssetImage('assets/Sticker7.png'),
+                                              NetworkImage(widget.stickerPacks.trayimagefile),
+                                          // image:
+                                          //     AssetImage('assets/Sticker7.png'),
                                           fit: BoxFit.cover,
                                         )),
-                                    // children: [
-                                    //   Image.asset('assets/Sticker7.png', height: 85,)
-                                    // ],
                                   ),
-                  
-                    // Image.network(
-                    //   widget.stickerPacks.trayImageFile,
-                    //   height: 50,
-                    //   width: 50,
-                    // ),
-                   
+        
                     Text(
                       widget.stickerPacks.name,
                       style: TextStyle(
@@ -114,32 +127,7 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                 ),
               ),
             ),
-            // Flexible(
-            //   flex: 1,
-            //   fit: FlexFit.loose,
-            //   child: Container(
-            //     color: Colors.blue,
-            //     child: Column(
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       crossAxisAlignment: CrossAxisAlignment.center,
-            //       children: <Widget>[
-            //         Padding(
-            //           padding: EdgeInsets.fromLTRB(50.0, 2.0, 10.0, 0.0),
-            //         ),
-            //         Padding(
-            //           padding: const EdgeInsets.only(left: 60.0),
-            //           child: Text(
-            //             widget.stickerPacks.publisher,
-            //             style: TextStyle(
-            //               fontSize: 18.0,
-            //               fontWeight: FontWeight.normal,
-            //             ),
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+          
             Flexible(
               flex: 25,
               fit: FlexFit.tight,
@@ -187,6 +175,8 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                               .contains(widget.stickerPacks.identiFier)) {
                             addToWhatsapp(widget.stickerPacks);
                           }
+
+                          addUserr();
                         },
                         color: Colors.black,
                         child: Text( 'Add to WhatsApp',
@@ -320,4 +310,16 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
       },
     );
   }
+}
+
+void addUserr() {
+
+  firestore.collection("Compras").add(
+  {
+    "Usuario" : getuid,
+    "StickerCompra" : getidcompra
+    }
+  ).then((value){
+    print(value.id);
+  });
 }
