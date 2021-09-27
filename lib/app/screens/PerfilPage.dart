@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stickers_internet/app/services/AuthService.dart';
+//import 'package:flutter_stickers_internet/app/services/AuthService.dart';
 import 'package:flutter_stickers_internet/app/ui/global_controllers/session_controller.dart';
 import 'package:flutter_stickers_internet/app/ui/routes/routes.dart';
 import 'package:flutter_stickers_internet/app/widgets/ChangeThemeButtonWidget.dart';
 
 import 'package:hexcolor/hexcolor.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 import 'package:flutter_meedu/router.dart' as router;
 
 class PerfilPage extends StatefulWidget {
@@ -154,7 +154,7 @@ Widget infoProfile() {
 }
 
 Widget settings(BuildContext context) {
-  final authService = Provider.of<AuthService>(context, listen: false);
+  //final authService = Provider.of<AuthService>(context, listen: false);
   return Container(
     child: Center(
       child: Column(

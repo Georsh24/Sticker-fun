@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_stickers_internet/app/screens/LoginScreen.dart';
+//import 'package:flutter_stickers_internet/app/screens/LoginScreen.dart';
+import 'package:flutter_stickers_internet/app/ui/pages/login/login_page.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 
@@ -171,7 +172,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
                   child: Text('Comencemos', style: TextStyle(fontSize: 20),),
                   onPressed: (){
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
                   },
                 ),
               )

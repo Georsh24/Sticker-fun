@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:flutter_meedu/flutter_meedu.dart';
 import 'package:flutter_stickers_internet/app/domain/repositories/authentication_repository.dart';
 import 'package:flutter_stickers_internet/app/ui/global_controllers/session_controller.dart';
@@ -25,7 +21,7 @@ class SplashController extends SimpleNotifier{
       _routeName=Routes.HOME;
       _sessionController.setUser(user);
     }else{
-      _routeName = user != null?Routes.HOME:Routes.LOGIN;
+      _routeName = user != null?Routes.HOME:Routes.SPLASH1;
     }
     
     notify();

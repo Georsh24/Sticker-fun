@@ -6,15 +6,19 @@ import 'package:dio/dio.dart' as di;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+//import 'package:http/http.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../models/stickerPacks.dart';
 import 'package:path/path.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 String getuid = '';
 String getidcompra = '';
+String comprado = "init";
+
 class MyStickerDetails extends StatefulWidget {
   final StickerPacks stickerPacks;
   MyStickerDetails({required this.stickerPacks}) : super();
@@ -28,6 +32,14 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
   List<String> stickerImageList = [];
   static const MethodChannel stickerMethodChannel = const MethodChannel(
       'com.viztushar.flutter.flutter_stickers_internet/sharedata');
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 100), () {
+      getCompras();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,52 +82,60 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
       body: Container(
         padding: EdgeInsets.all(15.0),
         child: Column(
-        
           children: <Widget>[
-
-
- Consumer(
-              builder: (_, watch, __ ){
-               final user = watch(sessionProvider).user!;
+            Consumer(
+              builder: (_, watch, __) {
+                final user = watch(sessionProvider).user!;
 
                 getuid = user.uid;
                 getidcompra = widget.stickerPacks.identiFier;
-               return SizedBox.shrink();
-              
-              
+                return SizedBox.shrink();
               },
+            ),
+            Container(
+              child: Text(widget.stickerPacks.identiFier),
+            ),
+            Container(
+              width: 300,
+              child: MaterialButton(
+                color: Colors.red,
+                child: Text('Mostrar Compras'),
+                onPressed: () {
+                  if (getCompras() == "comprado") {
+                    descargar(context);
+                  } else {
+                    print("Valor if");
+                    print(comprado);
+                    comprar(context);
+                  }
+                },
               ),
-              Container(
-                child: Text(widget.stickerPacks.identiFier),
-              ),
+            ),
             Flexible(
-              
-             flex: 5,
+              flex: 5,
               child: Container(
                 color: Colors.red,
                 child: Row(
                   children: <Widget>[
-                      Container(
-                        height: 100,
-                        width: 100,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(200),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: Colors.white,
-                                              blurRadius: 5,
-                                              spreadRadius: -8),
-                                        ],
-                                        image: DecorationImage(
-                                          image:
-                                              NetworkImage(widget.stickerPacks.trayimagefile),
-                                          // image:
-                                          //     AssetImage('assets/Sticker7.png'),
-                                          fit: BoxFit.cover,
-                                        )),
-                                  ),
-        
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(200),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.white,
+                                blurRadius: 5,
+                                spreadRadius: -8),
+                          ],
+                          image: DecorationImage(
+                            image:
+                                NetworkImage(widget.stickerPacks.trayimagefile),
+                            // image:
+                            //     AssetImage('assets/Sticker7.png'),
+                            fit: BoxFit.cover,
+                          )),
+                    ),
                     Text(
                       widget.stickerPacks.name,
                       style: TextStyle(
@@ -127,7 +147,6 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                 ),
               ),
             ),
-          
             Flexible(
               flex: 25,
               fit: FlexFit.tight,
@@ -159,30 +178,33 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                 child: Align(
                     alignment: AlignmentDirectional.bottomCenter,
                     child: SizedBox.expand(
-                      child: RaisedButton(
+                      child: MaterialButton(
                         padding: EdgeInsets.all(15.0),
                         onPressed: () {
-
-                           // downloadSticker(widget.stickerPacks, context);
-
-
-                          if (!downloadList
-                              .contains(widget.stickerPacks.identiFier)) {
-                            isDownloading = false;
-                            print(isLoading);
-                            downloadSticker(widget.stickerPacks, context);
-                          } else if (downloadList
-                              .contains(widget.stickerPacks.identiFier)) {
-                            addToWhatsapp(widget.stickerPacks);
+                          if (getCompras() == "comprado") {
+                            if (!downloadList
+                                .contains(widget.stickerPacks.identiFier)) {
+                              isDownloading = false;
+                              print(isLoading);
+                              downloadSticker(widget.stickerPacks, context);
+                            } else if (downloadList
+                                .contains(widget.stickerPacks.identiFier)) {
+                              addToWhatsapp(widget.stickerPacks);
+                            }
+                          } else {
+                            print("Valor if");
+                            print(comprado);
+                            comprar(context);
                           }
-
-                          addUserr();
                         },
                         color: Colors.black,
-                        child: Text( 'Add to WhatsApp',
-                          // downloadList.contains(widget.stickerPacks.identiFier)
-                          //     ? 'Add To WhatsApp'
-                          //     : "Download",
+                        child: Text(
+                          "I want it",
+
+                          // 'Add to WhatsApp',
+                          //  comprado == "comprado"
+                          //     ? 'Comprado'
+                          //     : "Por Favor Comprame",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 18.0,
@@ -313,13 +335,61 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
 }
 
 void addUserr() {
-
-  firestore.collection("Compras").add(
-  {
-    "Usuario" : getuid,
-    "StickerCompra" : getidcompra
-    }
-  ).then((value){
+  firestore
+      .collection("Compras")
+      .add({"Usuario": getuid, "StickerCompra": getidcompra}).then((value) {
     print(value.id);
   });
+}
+
+String getCompras() {
+  firestore
+      .collection("Compras")
+      .where('Usuario', isEqualTo: getuid)
+      .where('StickerCompra', isEqualTo: getidcompra)
+      .get()
+      .then(
+    (querySnapshot) {
+      comprado = "comprar";
+      querySnapshot.docs.forEach(
+        (result) {
+          comprado = "comprado";
+          print(result.data());
+        },
+      );
+      print(getidcompra);
+      print("Comprado:");
+      print(comprado);
+    },
+  );
+
+  return comprado;
+}
+
+void comprar(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text('Hola'),
+          actions: [
+            MaterialButton(
+                child: Text('comprar'),
+                onPressed: () {
+                  addUserr();
+                })
+          ],
+        );
+      });
+}
+
+void descargar(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text('Hola'),
+          actions: [MaterialButton(child: Text('Descargar'), onPressed: () {})],
+        );
+      });
 }

@@ -8,6 +8,7 @@ import 'domain/repositories/authentication_repository.dart';
 import 'domain/repositories/sign_up_repository.dart';
 
 void injectDependencies() {
+  // ignore: unused_local_variable
   var lazyPut = Get.i.lazyPut<AuthentiticationRepository>(
     () => AuthenticationRepositoryImpl(FirebaseAuth.instance),
   );

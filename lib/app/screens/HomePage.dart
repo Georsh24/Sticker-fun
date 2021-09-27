@@ -23,9 +23,10 @@ class _MyHomePageState extends State<MyHomePage> {
   static const MethodChannel stickerMethodChannel = const MethodChannel(
       'com.viztushar.flutter.flutter_stickers_internet/sharedata');
   //url del jsnon
-  final String url = 'https://gist.githubusercontent.com/Georsh24/9653a587c3836ea8ef35d4470df6a861/raw/56427b20a21e06fd26e1068e695d293172082337/stickers_p.json';
+  final String url =
+      'https://gist.githubusercontent.com/Georsh24/9653a587c3836ea8ef35d4470df6a861/raw/56427b20a21e06fd26e1068e695d293172082337/stickers_p.json';
   //'http://10.0.2.2:8000/api/tasks';
-  
+
   //StickerPacks stickerPack = StickerPacks();
   List<StickerPacks> st = [];
   bool isLoading = false, isDownloading = true;
@@ -39,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
     isDownloading = true;
     iD = -1;
     this.getJsonData();
+    getCompras();
   }
 
   Future getJsonData() async {
@@ -212,32 +214,32 @@ class _MyHomePageState extends State<MyHomePage> {
                                       width: size.width * 0.55,
                                       margin: EdgeInsets.only(right: 5),
                                     ),
-                                    
                                   ],
                                 ),
                               ),
                               Column(
-                                children: 
-                                  [
-                                    Container(
+                                children: [
+                                  Container(
                                     child: IconButton(
                                       iconSize: size.width * 0.1,
-                                      icon: Icon(Icons.favorite_border_outlined),
+                                      icon:
+                                          Icon(Icons.favorite_border_outlined),
                                       onPressed: () {},
                                     ),
                                     height: 60,
                                     width: size.width * 0.18,
                                   ),
-                                   Container(
-                                      child: Text(
-                                        st[i].publisher, style: TextStyle(fontSize: 9),
-                                        overflow: TextOverflow.clip,
-                                        maxLines: 3,
-                                        softWrap: true,
-                                      ),
-                                      width: size.width * 0.1,
-                                      margin: EdgeInsets.only(right: 5),
+                                  Container(
+                                    child: Text(
+                                      st[i].publisher,
+                                      style: TextStyle(fontSize: 9),
+                                      overflow: TextOverflow.clip,
+                                      maxLines: 3,
+                                      softWrap: true,
                                     ),
+                                    width: size.width * 0.1,
+                                    margin: EdgeInsets.only(right: 5),
+                                  ),
                                 ],
                               )
                             ],

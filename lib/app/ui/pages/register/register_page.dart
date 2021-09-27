@@ -5,13 +5,14 @@ import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/state.dart';
 import 'package:flutter_stickers_internet/app/ui/global_controllers/session_controller.dart';
 import 'package:flutter_stickers_internet/app/ui/global_widgets/custom_input_field.dart';
+//import 'package:flutter_stickers_internet/app/ui/pages/login/login_page.dart';
 import 'package:flutter_stickers_internet/app/ui/pages/register/utils/send_register_form.dart';
-import 'package:flutter_stickers_internet/app/ui/routes/routes.dart';
+//import 'package:flutter_stickers_internet/app/ui/routes/routes.dart';
 import 'package:flutter_stickers_internet/app/utils/email_validator.dart';
 import 'package:flutter_stickers_internet/app/utils/name_validator.dart';
 import 'package:flutter_stickers_internet/app/widgets/CardContainer.dart';
 import 'package:flutter_stickers_internet/app/widgets/auth_background.dart';
-import 'package:flutter_meedu/router.dart' as router;
+//import 'package:flutter_meedu/router.dart' as router;
 import 'package:hexcolor/hexcolor.dart';
 import 'controller/register_controller.dart';
 import 'controller/register_state.dart';
@@ -65,8 +66,8 @@ class RegisterPage extends StatelessWidget {
                             Colors.indigo.withOpacity(0.1)),
                         shape: MaterialStateProperty.all(StadiumBorder())),
                     onPressed: () {
-                     Navigator.pushReplacementNamed(context, Routes.LOGIN);
-                     //router.pushNamed(Routes.REGISTER);
+                     Navigator.pop(context);
+                     // router.pushNamedAndRemoveUntil(Routes.LOGIN);
                     },
                   ),
                 ],
