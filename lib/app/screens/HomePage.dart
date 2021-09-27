@@ -196,11 +196,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                             margin: EdgeInsets.only(right: 10),
                                           ),
                                           Container(
-                                              height: 25,
-                                              child: Text(st[i].publisherEmail,
-                                                  overflow: TextOverflow.clip,
-                                                  maxLines: 1,
-                                                  softWrap: true)),
+                                            height: 25,
+                                            child: Text(
+                                              st[i].publisherEmail,
+                                              overflow: TextOverflow.clip,
+                                              maxLines: 1,
+                                              softWrap: true,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -250,110 +253,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: double.infinity,
                       ),
                     );
-
-                    // return Card(
-                    //   //color: Colors.yellow,
-                    //   child: Container(
-                    //     padding: EdgeInsets.all(10.0),
-                    //     child: Row(
-                    //       children: <Widget>[
-                    //         Container(
-                    //           // color: Colors.red,
-                    //           child: GestureDetector(
-                    //             onTap: () {
-                    //               navigateToDetailsScreen(i, context);
-                    //             },
-                    //             child: Column(
-                    //               crossAxisAlignment: CrossAxisAlignment.start,
-                    //               mainAxisAlignment:
-                    //                   MainAxisAlignment.spaceAround,
-                    //               children: <Widget>[
-                    //                 Row(
-                    //                   children: <Widget>[
-                    //                     Text(
-                    //                       st[i].name,
-                    //                       style: TextStyle(
-                    //                         color: Colors.black,
-                    //                         fontSize: 18.0,
-                    //                         fontWeight: FontWeight.bold,
-                    //                       ),
-                    //                     ),
-                    //                     Text(
-                    //                       ' • ',
-                    //                       style: TextStyle(
-                    //                         color: Colors.black,
-                    //                         fontSize: 16.0,
-                    //                         fontWeight: FontWeight.normal,
-                    //                       ),
-                    //                     ),
-                    //                     Text(
-                    //                       st[i].publisher,
-                    //                       style: TextStyle(
-                    //                         color: Colors.black,
-                    //                         fontSize: 16.0,
-                    //                         fontWeight: FontWeight.normal,
-                    //                       ),
-                    //                     ),
-                    //                   ],
-                    //                 ),
-                    //                 Image.network(st[i].trayimagefile),
-                    //                 // Wrap(
-                    //                 //   alignment: WrapAlignment.start,
-                    //                 //   crossAxisAlignment:
-                    //                 //       WrapCrossAlignment.center,
-                    //                 //   direction: Axis.horizontal,
-                    //                 //   spacing: 8.0,
-                    //                 //   runSpacing: 4.0,
-                    //                 //   children: <Widget>[
-                    //                 //     Row(
-                    //                 //       children: <Widget>[
-                    //                 //         Image.network(
-                    //                 //           st[i].sticker[0].imagefile,
-                    //                 //           height: 70.0,
-                    //                 //           width: 70.0,
-                    //                 //         ),
-                    //                 //         Image.network(
-                    //                 //           st[i].sticker[1].imageFile,
-                    //                 //           height: 70.0,
-                    //                 //           width: 70.0,
-                    //                 //         ),
-                    //                 //         Image.network(
-                    //                 //           st[i].sticker[2].imageFile,
-                    //                 //           height: 70.0,
-                    //                 //           width: 70.0,
-                    //                 //         ),
-                    //                 //         st[i].sticker.length > 3
-                    //                 //             ? Image.network(
-                    //                 //                 st[i].sticker[3].imageFile,
-                    //                 //                 height: 70.0,
-                    //                 //                 width: 70.0,
-                    //                 //               )
-                    //                 //             : SizedBox(
-                    //                 //                 width: 70.0,
-                    //                 //                 height: 70.0,
-                    //                 //               ),
-                    //                 //       ],
-                    //                 //     ),
-                    //                 //   ],
-                    //                 // ),
-                    //               ],
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         Container(
-                    //           width: size.width * 0.2,
-                    //           //color: Colors.blue,
-                    //           child: IconButton(
-                    //             iconSize: size.width * 0.07,
-                    //             alignment: Alignment.centerRight,
-                    //             icon: Icon(Icons.favorite_border_outlined),
-                    //             onPressed: () {},
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // );
                   },
                 ),
         ),

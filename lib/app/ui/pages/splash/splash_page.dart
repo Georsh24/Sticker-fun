@@ -8,7 +8,6 @@ import 'package:flutter_stickers_internet/app/ui/pages/splash/splash_controller.
 
 final splashProvider = SimpleProvider(
   (_) => SplashController(sessionProvider.read),
-  
 );
 
 class SplashPage extends StatelessWidget {
@@ -18,9 +17,9 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderListener<SplashController>(
       provider: splashProvider,
-      onChange: (_, controller){
+      onChange: (_, controller) {
         final routeName = controller.routeName;
-        if (routeName != null){
+        if (routeName != null) {
           router.pushReplacementNamed(routeName);
         }
       },

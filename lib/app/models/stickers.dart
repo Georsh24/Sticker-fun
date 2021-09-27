@@ -3,7 +3,6 @@ part 'stickers.g.dart';
 
 @JsonSerializable()
 class Stickers {
-
   String imagefile;
   List emojis;
 
@@ -20,9 +19,8 @@ class Stickers {
   set imageFile(String imagefile) {
     this.imagefile = imagefile;
   }
-  
+
   set emoji(List emojis) {
     this.emojis = emojis;
   }
-
 }

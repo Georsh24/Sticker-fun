@@ -1,16 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-class SignInResponse{
+class SignInResponse {
   final SignInError? error;
   final User? user;
 
   SignInResponse(this.error, this.user);
-
-
 }
 
-
-enum SignInError{
+enum SignInError {
   tooManyRequest,
   networkRequestFailed,
   userDisabled,
@@ -19,20 +16,19 @@ enum SignInError{
   unknow,
 }
 
-SignInError stringToSignInError(String code){
-  switch (code){
+SignInError stringToSignInError(String code) {
+  switch (code) {
     case "too-many-request":
-    return SignInError.tooManyRequest;
+      return SignInError.tooManyRequest;
     case "user-disabled":
-    return SignInError.userDisabled;
+      return SignInError.userDisabled;
     case "user-no-found":
-    return SignInError.userNotFound;
+      return SignInError.userNotFound;
     case "network-requesd-failed":
-    return SignInError.networkRequestFailed;
+      return SignInError.networkRequestFailed;
     case "wrong-password":
-    return SignInError.wrongPassword;
-    default :
-    return SignInError.unknow;
-
+      return SignInError.wrongPassword;
+    default:
+      return SignInError.unknow;
   }
 }

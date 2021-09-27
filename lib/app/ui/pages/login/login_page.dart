@@ -69,15 +69,17 @@ class LoginPage extends StatelessWidget {
                       //Navigator.pushReplacementNamed(context, Routes.LOGIN);
                     },
                   ),
-                   TextButton(
-                      child: const Text("Forgot Password?", style: TextStyle(fontSize: 18, color: Colors.black87),),
-                          style: ButtonStyle(
+                  TextButton(
+                    child: const Text(
+                      "Forgot Password?",
+                      style: TextStyle(fontSize: 18, color: Colors.black87),
+                    ),
+                    style: ButtonStyle(
                         overlayColor: MaterialStateProperty.all(
                             Colors.indigo.withOpacity(0.1)),
                         shape: MaterialStateProperty.all(StadiumBorder())),
-                      onPressed: () => router.pushNamed(Routes.RESET_PASSWORD),
-                     
-                    ),
+                    onPressed: () => router.pushNamed(Routes.RESET_PASSWORD),
+                  ),
                   SizedBox(
                     height: 50,
                   ),
@@ -130,53 +132,52 @@ class _LoginForm extends StatelessWidget {
                       return null;
                     }
                     return "invalid Password";
-
                   },
                 ),
-                SizedBox(height: 30,),
-                    Container(
-                      width:   MediaQuery.of(context).size.width,
-                       decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.topRight,
-                      stops: [
-                        0.1,
-                        0.80,
-                      ],
-                      colors: [
-                        HexColor('00ff00'),
-                        HexColor('05d0ae'),
-                      ])),
-                      child: MaterialButton(
-                        
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        elevation: 0,
-                        child: Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                          child: const Text(
-                            'Sign In',
-                            style: TextStyle(
-                                color: Colors.black87,
-                               fontWeight: FontWeight.bold,
-                                fontSize: 20),
-                          ),
-                        ),
-                        onPressed: () => sendLoginForm(context),
+                SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.topRight,
+                          stops: [
+                            0.1,
+                            0.80,
+                          ],
+                          colors: [
+                            HexColor('00ff00'),
+                            HexColor('05d0ae'),
+                          ])),
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    elevation: 0,
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                      child: const Text(
+                        'Sign In',
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    // TextButton(
-                    //   onPressed: () => router.pushNamed(Routes.RESET_PASSWORD),
-                    //   child: const Text("Forgot Password?"),
-                    // ),
-                  
-                
+                    onPressed: () => sendLoginForm(context),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                // TextButton(
+                //   onPressed: () => router.pushNamed(Routes.RESET_PASSWORD),
+                //   child: const Text("Forgot Password?"),
+                // ),
+
                 const SizedBox(
                   height: 30,
                 )
@@ -188,4 +189,3 @@ class _LoginForm extends StatelessWidget {
     );
   }
 }
-  

@@ -29,4 +29,3 @@ enum SignUpError {
   unknow,
   networkRequestFailed,
 }
-

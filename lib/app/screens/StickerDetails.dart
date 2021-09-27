@@ -92,25 +92,25 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                 return SizedBox.shrink();
               },
             ),
-            Container(
-              child: Text(widget.stickerPacks.identiFier),
-            ),
-            Container(
-              width: 300,
-              child: MaterialButton(
-                color: Colors.red,
-                child: Text('Mostrar Compras'),
-                onPressed: () {
-                  if (getCompras() == "comprado") {
-                    descargar(context);
-                  } else {
-                    print("Valor if");
-                    print(comprado);
-                    comprar(context);
-                  }
-                },
-              ),
-            ),
+            // Container(
+            //   child: Text(widget.stickerPacks.identiFier),
+            // ),
+            // Container(
+            //   width: 300,
+            //   child: MaterialButton(
+            //     color: Colors.red,
+            //     child: Text('Mostrar Compras'),
+            //     onPressed: () {
+            //       if (getCompras() == "comprado") {
+            //         descargar(context);
+            //       } else {
+            //         print("Valor if");
+            //         print(comprado);
+            //         comprar(context);
+            //       }
+            //     },
+            //   ),
+            // ),
             Flexible(
               flex: 5,
               child: Container(
@@ -148,7 +148,7 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
               ),
             ),
             Flexible(
-              flex: 25,
+              flex: 20,
               fit: FlexFit.tight,
               child: Container(
                 color: Colors.yellow,

@@ -9,16 +9,16 @@ import 'package:flutter_stickers_internet/app/ui/pages/register/controller/regis
 
 class RegisterController extends StateNotifier<RegisterState> {
   final SessionController _sessionController;
-  RegisterController(this._sessionController) : super(RegisterState.initialState);
+  RegisterController(this._sessionController)
+      : super(RegisterState.initialState);
   final GlobalKey<FormState> formKey = GlobalKey();
   final _signUpRepository = Get.i.find<SignUpRepository>();
 
-  Future<SingUpResponse> submit() async{
-    
-    final response = await  _signUpRepository.register(
+  Future<SingUpResponse> submit() async {
+    final response = await _signUpRepository.register(
       SignUpData(state.name, state.lastname, state.email, state.password),
     );
-    if (response.error == null){
+    if (response.error == null) {
       _sessionController.setUser(response.user!);
     }
     return response;

@@ -21,9 +21,10 @@ class LoginController extends SimpleNotifier {
     _password = text;
   }
 
-  Future<SignInResponse> submit() async{
-    final response = await _authRepository.signInWithEmailAndPassword(_email, _password);
-    if(response.error == null){
+  Future<SignInResponse> submit() async {
+    final response =
+        await _authRepository.signInWithEmailAndPassword(_email, _password);
+    if (response.error == null) {
       _sessionController.setUser(response.user!);
     }
     return response;

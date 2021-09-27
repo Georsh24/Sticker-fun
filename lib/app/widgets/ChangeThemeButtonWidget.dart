@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stickers_internet/app/provider/ThemeProvider.dart';
 
-
 import 'package:provider/provider.dart';
 
 class ChangeThemeButtonWidget extends StatefulWidget {

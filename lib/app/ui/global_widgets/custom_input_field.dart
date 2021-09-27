@@ -35,7 +35,6 @@ class _CustomInputFieldState extends State<CustomInputField> {
   @override
   Widget build(BuildContext context) {
     return FormField<String>(
-    
       validator: widget.validator,
       initialValue: '',
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -43,7 +42,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(   
+            TextField(
               obscureText: _obscureText,
               keyboardType: widget.inputType,
               onChanged: (text) {
@@ -69,13 +68,19 @@ class _CustomInputFieldState extends State<CustomInputField> {
                 )),
                 labelStyle: TextStyle(color: Colors.grey),
                 labelText: widget.label,
-                prefixIcon: Icon(widget.prefixIcon, color: HexColor('007c00'),),
+                prefixIcon: Icon(
+                  widget.prefixIcon,
+                  color: HexColor('007c00'),
+                ),
                 border: const OutlineInputBorder(),
                 suffixIcon: widget.isPassword
                     ? CupertinoButton(
-                        child: Icon(_obscureText
-                            ? Icons.visibility
-                            : Icons.visibility_off, color: HexColor('007c00'),),
+                        child: Icon(
+                          _obscureText
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: HexColor('007c00'),
+                        ),
                         onPressed: () {
                           _obscureText = !_obscureText;
                           setState(() {});

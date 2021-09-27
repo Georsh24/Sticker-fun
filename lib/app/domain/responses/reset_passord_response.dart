@@ -1,25 +1,23 @@
-enum  ResetPasswordResponse{
-  ok, 
+enum ResetPasswordResponse {
+  ok,
   networkRequestFailed,
   userDisabled,
   userNotFound,
   tooManyRequest,
   unknown,
-
 }
 
-ResetPasswordResponse stringToResetPasswordRespone(String code){
-  switch(code){
+ResetPasswordResponse stringToResetPasswordRespone(String code) {
+  switch (code) {
     case "internal-error":
-    return ResetPasswordResponse.tooManyRequest;
+      return ResetPasswordResponse.tooManyRequest;
     case "user-not-found":
-    return ResetPasswordResponse.userNotFound;
+      return ResetPasswordResponse.userNotFound;
     case "user-disabled":
-    return ResetPasswordResponse.userDisabled;
+      return ResetPasswordResponse.userDisabled;
     case "network-requesd-failed":
-    return ResetPasswordResponse.networkRequestFailed;
+      return ResetPasswordResponse.networkRequestFailed;
     default:
-    return ResetPasswordResponse.unknown;
-
+      return ResetPasswordResponse.unknown;
   }
 }

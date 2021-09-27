@@ -22,13 +22,8 @@ class MyStickers extends StatefulWidget {
 class _MyStickersState extends State<MyStickers> {
   static const MethodChannel stickerMethodChannel = const MethodChannel(
       'com.viztushar.flutter.flutter_stickers_internet/sharedata');
-  final String url =  //'http://10.0.2.2:8000/api/tasks';
-  'https://gist.githubusercontent.com/Georsh24/9653a587c3836ea8ef35d4470df6a861/raw/56427b20a21e06fd26e1068e695d293172082337/stickers_p.json';
-
- 
-    
-     
-  //StickerPacks stickerPack = StickerPacks();
+  final String url = //'http://10.0.2.2:8000/api/tasks';
+      'https://gist.githubusercontent.com/Georsh24/9653a587c3836ea8ef35d4470df6a861/raw/56427b20a21e06fd26e1068e695d293172082337/stickers_p.json';
   List<StickerPacks> st = [];
   bool isLoading = false, isDownloading = true;
   int iD = -1;
@@ -42,11 +37,6 @@ class _MyStickersState extends State<MyStickers> {
     iD = -1;
     this.getJsonData();
   }
-  // @override
-  // void dispose(){
-  //   super.dispose();
-
-  // }
 
   Future getJsonData() async {
     var response = await http.get(

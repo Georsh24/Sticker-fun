@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_stickers_internet/app/services/AuthService.dart';
 import 'package:flutter_stickers_internet/app/ui/global_controllers/session_controller.dart';
 import 'package:flutter_stickers_internet/app/ui/routes/routes.dart';
 import 'package:flutter_stickers_internet/app/widgets/ChangeThemeButtonWidget.dart';
-
 import 'package:hexcolor/hexcolor.dart';
-//import 'package:provider/provider.dart';
 import 'package:flutter_meedu/router.dart' as router;
 
 class PerfilPage extends StatefulWidget {
@@ -68,24 +65,27 @@ class _PerfilPageState extends State<PerfilPage> {
           ),
         ),
         Positioned(
-            left: 0,
-            right: 0,
-            bottom: 60,
-            child: Center(
-                child: Container(
+          left: 0,
+          right: 0,
+          bottom: 60,
+          child: Center(
+            child: Container(
               width: 200,
               height: 200,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(200),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.white, blurRadius: 5, spreadRadius: -8),
-                  ],
-                  image: DecorationImage(
-                    image: AssetImage('assets/avatar.png'),
-                    fit: BoxFit.cover,
-                  )),
-            ))),
+                borderRadius: BorderRadius.circular(200),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.white, blurRadius: 5, spreadRadius: -8),
+                ],
+                image: DecorationImage(
+                  image: AssetImage('assets/avatar.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+        ),
         Positioned(
             bottom: -10,
             child: Column(
@@ -174,10 +174,8 @@ Widget settings(BuildContext context) {
           ),
           ListTile(
             onTap: () async {
-      
               await sessionProvider.read.signOut();
-               router.pushNamedAndRemoveUntil(Routes.LOGIN);
-              
+              router.pushNamedAndRemoveUntil(Routes.LOGIN);
             },
             leading: Icon(Icons.logout_outlined),
             title: Text('Logout '),

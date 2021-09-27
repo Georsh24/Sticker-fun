@@ -7,10 +7,9 @@ import 'package:flutter_stickers_internet/app/domain/responses/reset_passord_res
 import 'package:flutter_stickers_internet/app/ui/global_widgets/custom_input_field.dart';
 import 'package:flutter_stickers_internet/app/ui/global_widgets/dialogs/dialogs.dart';
 import 'package:flutter_stickers_internet/app/ui/global_widgets/dialogs/progres_dialog.dart';
-import 'package:flutter_stickers_internet/app/ui/pages/reset_password/controller/reset_password_controller.dart';
 import 'package:flutter_stickers_internet/app/utils/email_validator.dart';
 
-
+import 'controller/reset_password_controller.dart';
 
 final resetPasswordProvider = SimpleProvider(
   (_) => ResetPasswordController(),
@@ -39,7 +38,7 @@ class ResetPasswordPage extends StatelessWidget {
                     CustomInputField(
                       label: "Email",
                       onChanged: controller.onEmailChange,
-                      inputType: TextInputType.emailAddress,  prefixIcon: Icons.alternate_email_sharp,
+                      inputType: TextInputType.emailAddress, prefixIcon:  Icons.face_outlined,
                     ),
                     ElevatedButton(
                       onPressed: () => _submit(context),
