@@ -6,13 +6,12 @@ import 'package:dio/dio.dart' as di;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'package:http/http.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../models/stickerPacks.dart';
 import 'package:path/path.dart';
-//import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_meedu/router.dart' as router;
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 String getuid = '';
@@ -46,17 +45,27 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
     final logoimg = Theme.of(context).brightness == Brightness.dark
         ? 'assets/logoblack.png'
         : 'assets/logowhite.png';
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
-        toolbarHeight: 100,
+        toolbarHeight: size.height * 0.15,
         automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(
+            Icons.chevron_left_outlined,
+            color: Colors.grey.shade400,
+            size: size.width * 0.1,
+          ),
+          onPressed: () {
+            router.pop();
+          },
+        ),
         centerTitle: true,
         title: Image.asset(
           '$logoimg',
           fit: BoxFit.contain,
-          height: 50,
+          height: size.height * 0.09,
         ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -71,13 +80,12 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                   HexColor('00ff00'),
                   HexColor('05d0ae'),
                 ]),
-            border: Border.all(
-              color: Colors.transparent,
-              width: 0,
-            ),
+            border: Border(
+                bottom: BorderSide(
+                    width: 3, color: Colors.grey, style: BorderStyle.none)),
           ),
         ),
-        elevation: 0.0,
+        elevation: 4,
       ),
       body: Container(
         padding: EdgeInsets.all(15.0),
@@ -92,25 +100,6 @@ class _MyStickerDetailsState extends State<MyStickerDetails> {
                 return SizedBox.shrink();
               },
             ),
-            // Container(
-            //   child: Text(widget.stickerPacks.identiFier),
-            // ),
-            // Container(
-            //   width: 300,
-            //   child: MaterialButton(
-            //     color: Colors.red,
-            //     child: Text('Mostrar Compras'),
-            //     onPressed: () {
-            //       if (getCompras() == "comprado") {
-            //         descargar(context);
-            //       } else {
-            //         print("Valor if");
-            //         print(comprado);
-            //         comprar(context);
-            //       }
-            //     },
-            //   ),
-            // ),
             Flexible(
               flex: 5,
               child: Container(

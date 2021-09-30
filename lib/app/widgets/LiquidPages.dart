@@ -63,14 +63,7 @@ final liquidPages = [
             ),
           ),
         ),
-      
-        MaterialButton(
-          child: Text('Comecemos'),
-          onPressed: (){
-            
-          })
-      
-     
+        MaterialButton(child: Text('Comecemos'), onPressed: () {})
       ],
     ),
   ),

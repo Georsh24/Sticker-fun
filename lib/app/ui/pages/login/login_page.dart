@@ -53,21 +53,19 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 20,
                   ),
                   TextButton(
                     child: Text(
-                      'Crear una nueva cuenta',
+                      'Create a account',
                       style: TextStyle(fontSize: 18, color: Colors.black87),
                     ),
                     style: ButtonStyle(
                         overlayColor: MaterialStateProperty.all(
                             Colors.indigo.withOpacity(0.1)),
                         shape: MaterialStateProperty.all(StadiumBorder())),
-                    onPressed: () {
-                      router.pushNamed(Routes.REGISTER);
-                      //Navigator.pushReplacementNamed(context, Routes.LOGIN);
-                    },
+                    onPressed: () => router.pushReplacementNamed(Routes.REGISTER)
+                    
                   ),
                   TextButton(
                     child: const Text(
@@ -78,7 +76,7 @@ class LoginPage extends StatelessWidget {
                         overlayColor: MaterialStateProperty.all(
                             Colors.indigo.withOpacity(0.1)),
                         shape: MaterialStateProperty.all(StadiumBorder())),
-                    onPressed: () => router.pushNamed(Routes.RESET_PASSWORD),
+                    onPressed: () => router.pushReplacementNamed(Routes.RESET_PASSWORD),
                   ),
                   SizedBox(
                     height: 50,

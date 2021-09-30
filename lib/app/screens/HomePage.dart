@@ -48,44 +48,51 @@ class _MyHomePageState extends State<MyHomePage> {
       Uri.parse(url),
       headers: {"Accept": "application/json"},
     );
-    setState(() {
-      Map datas = jsonDecode(response.body);
-      Model m = Model.formJson(datas);
-      for (Map<String, dynamic> json in m.stickerPac) {
-        List<Stickers> s = [];
-        for (Map<String, dynamic> stickers in json['stickers']) {
-          s.add(Stickers(
-              imagefile: stickers['image_file'], emojis: stickers['emojis']));
+    setState(
+      () {
+        Map datas = jsonDecode(response.body);
+        Model m = Model.formJson(datas);
+        for (Map<String, dynamic> json in m.stickerPac) {
+          List<Stickers> s = [];
+          for (Map<String, dynamic> stickers in json['stickers']) {
+            s.add(Stickers(
+                imagefile: stickers['image_file'], emojis: stickers['emojis']));
+          }
+          print(json['publisher_email'] +
+              " " +
+              json['publisher_website'] +
+              " " +
+              json['privacy_policy_website'] +
+              " " +
+              json['license_agreement_website'] +
+              " ");
+          st.add(StickerPacks(
+              identifier: json['identifier'],
+              name: json['name'],
+              publisher: json['publisher'],
+              trayimagefile: json['tray_image_file'],
+              publisheremail: json['publisher_email'],
+              publisherwebsite: json['publisher_website'],
+              privacypolicywebsite: json['privacy_policy_website'],
+              licenseagreementwebsite: json['license_agreement_website'],
+              stickers: s));
         }
-        print(json['publisher_email'] +
-            " " +
-            json['publisher_website'] +
-            " " +
-            json['privacy_policy_website'] +
-            " " +
-            json['license_agreement_website'] +
-            " ");
-        st.add(StickerPacks(
-            identifier: json['identifier'],
-            name: json['name'],
-            publisher: json['publisher'],
-            trayimagefile: json['tray_image_file'],
-            publisheremail: json['publisher_email'],
-            publisherwebsite: json['publisher_website'],
-            privacypolicywebsite: json['privacy_policy_website'],
-            licenseagreementwebsite: json['license_agreement_website'],
-            stickers: s));
-      }
-      isLoading = false;
-    });
+        isLoading = false;
+      },
+    );
   }
 
   navigateToDetailsScreen(id, context) {
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      return MyStickerDetails(
-        stickerPacks: st[id],
-      );
-    }));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return MyStickerDetails(
+            stickerPacks: st[id],
+          );
+        },
+      ),
+    );
   }
 
   @override
@@ -97,36 +104,48 @@ class _MyHomePageState extends State<MyHomePage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
-        toolbarHeight: 100,
+        toolbarHeight: size.height * 0.15,
         automaticallyImplyLeading: false,
+        // leading: IconButton(
+        //   icon: Icon(
+        //     Icons.chevron_left_outlined,
+        //     color: Colors.grey.shade400,
+        //     size: size.width * 0.1,
+        //   ),
+        //   onPressed: () {
+        //     router.pop();
+        //   },
+        // ),
         centerTitle: true,
-        //title:  Image.asset('assets/logowhite.png', fit: BoxFit.contain, height: 50,), se usa esta para asssets estatico
         title: Image.asset(
           '$logoimg',
           fit: BoxFit.contain,
-          height: 50,
+          height: size.height * 0.09,
         ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.topRight,
-                stops: [
-                  0.1,
-                  0.80,
-                ],
-                colors: [
-                  HexColor('00ff00'),
-                  HexColor('05d0ae'),
-                ]),
-            border: Border.all(
-              color: Colors.transparent,
-              width: 0,
+              begin: Alignment.topLeft,
+              end: Alignment.topRight,
+              stops: [
+                0.1,
+                0.80,
+              ],
+              colors: [
+                HexColor('00ff00'),
+                HexColor('05d0ae'),
+              ],
+            ),
+            border: Border(
+              bottom: BorderSide(
+                width: 3,
+                color: Colors.grey,
+                style: BorderStyle.none,
+              ),
             ),
           ),
         ),
-        elevation: 0.0,
+        elevation: 4,
       ),
       body: Container(
         child: Center(
@@ -137,8 +156,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemBuilder: (context, i) {
                     return Card(
                       child: Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 1, vertical: 7),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 1,
+                          vertical: 7,
+                        ),
                         child: GestureDetector(
                           onTap: () {
                             navigateToDetailsScreen(i, context);
@@ -148,28 +169,22 @@ class _MyHomePageState extends State<MyHomePage> {
                               Container(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(200),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: Colors.white,
-                                              blurRadius: 5,
-                                              spreadRadius: -8),
-                                        ],
-                                        image: DecorationImage(
-                                          image:
-                                              NetworkImage(st[i].trayimagefile),
-                                          // image:
-                                          //     AssetImage('assets/Sticker7.png'),
-                                          fit: BoxFit.cover,
-                                        )),
-                                    // children: [
-                                    //   Image.asset('assets/Sticker7.png', height: 85,)
-                                    // ],
+                                      borderRadius: BorderRadius.circular(200),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.white,
+                                            blurRadius: 5,
+                                            spreadRadius: -8),
+                                      ],
+                                      image: DecorationImage(
+                                        image:
+                                            NetworkImage(st[i].trayimagefile),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
                                   height: 100,
                                   width: size.width * 0.20,
-                                  color: Colors.transparent,
                                   margin: EdgeInsets.only(right: 5, left: 7)),
                               Flexible(
                                 child: Column(
@@ -182,23 +197,28 @@ class _MyHomePageState extends State<MyHomePage> {
                                             child: Text(
                                               st[i].name,
                                               style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                              ),
                                               overflow: TextOverflow.clip,
                                               maxLines: 1,
                                               softWrap: true,
                                             ),
-                                            margin: EdgeInsets.only(right: 10),
+                                            margin: EdgeInsets.only(
+                                              right: 10,
+                                            ),
                                           ),
                                           Container(
                                             height: 25,
                                             child: Text('*'),
-                                            margin: EdgeInsets.only(right: 10),
+                                            margin: EdgeInsets.only(
+                                              right: 10,
+                                            ),
                                           ),
                                           Container(
                                             height: 25,
                                             child: Text(
-                                              st[i].publisherEmail,
+                                              st[i].publisher,
                                               overflow: TextOverflow.clip,
                                               maxLines: 1,
                                               softWrap: true,
@@ -215,7 +235,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                         softWrap: true,
                                       ),
                                       width: size.width * 0.55,
-                                      margin: EdgeInsets.only(right: 5),
+                                      margin: EdgeInsets.only(
+                                        right: 5,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -225,8 +247,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Container(
                                     child: IconButton(
                                       iconSize: size.width * 0.1,
-                                      icon:
-                                          Icon(Icons.favorite_border_outlined),
+                                      icon: Icon(
+                                        Icons.favorite_border_outlined,
+                                      ),
                                       onPressed: () {},
                                     ),
                                     height: 60,
@@ -234,8 +257,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                   Container(
                                     child: Text(
-                                      st[i].publisher,
-                                      style: TextStyle(fontSize: 9),
+                                      st[i].publisherEmail,
+                                      style: TextStyle(
+                                        fontSize: 9,
+                                      ),
                                       overflow: TextOverflow.clip,
                                       maxLines: 3,
                                       softWrap: true,
@@ -249,7 +274,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         height: 100,
-                        color: Colors.black12,
                         width: double.infinity,
                       ),
                     );

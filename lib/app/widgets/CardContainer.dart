@@ -12,14 +12,14 @@ class CardContainer extends StatelessWidget {
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.all(20),
-        decoration: _createCardShape(),
+        decoration: _createCardShape(context),
         child: this.child,
       ),
     );
   }
 
-  BoxDecoration _createCardShape() => BoxDecoration(
-          color: Colors.white,
+  BoxDecoration _createCardShape(context) => BoxDecoration(
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(

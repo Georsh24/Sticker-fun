@@ -9,7 +9,7 @@ class ProgressDialog {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: Colors.black,
+          color: Colors.transparent,
           alignment: Alignment.center,
           child: const CircularProgressIndicator(),
         ),

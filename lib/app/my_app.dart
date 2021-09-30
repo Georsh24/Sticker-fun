@@ -26,6 +26,7 @@ class MaterilAppTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
+      key: router.appKey,
       title: 'Sticker Fun',
       navigatorKey: router.navigatorKey,
       initialRoute: Routes.SPLASH,

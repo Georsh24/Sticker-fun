@@ -43,6 +43,9 @@ class _CustomInputFieldState extends State<CustomInputField> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
+              //style: TextStyle(color: Colors.yellow),
+
+              style: Theme.of(context).textTheme.overline,
               obscureText: _obscureText,
               keyboardType: widget.inputType,
               onChanged: (text) {
@@ -56,6 +59,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                 }
               },
               decoration: InputDecoration(
+                hintStyle: TextStyle(color: Colors.blue),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
                     color: HexColor('007c00'),

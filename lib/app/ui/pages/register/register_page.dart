@@ -5,6 +5,7 @@ import 'package:flutter_meedu/state.dart';
 import 'package:flutter_stickers_internet/app/ui/global_controllers/session_controller.dart';
 import 'package:flutter_stickers_internet/app/ui/global_widgets/custom_input_field.dart';
 import 'package:flutter_stickers_internet/app/ui/pages/register/utils/send_register_form.dart';
+import 'package:flutter_stickers_internet/app/ui/routes/routes.dart';
 import 'package:flutter_stickers_internet/app/utils/email_validator.dart';
 import 'package:flutter_stickers_internet/app/utils/name_validator.dart';
 import 'package:flutter_stickers_internet/app/widgets/CardContainer.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_stickers_internet/app/widgets/auth_background.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'controller/register_controller.dart';
 import 'controller/register_state.dart';
+import 'package:flutter_meedu/router.dart' as router;
 
 final registerProvider = StateProvider<RegisterController, RegisterState>(
   (_) => RegisterController(sessionProvider.read),
@@ -53,7 +55,7 @@ class RegisterPage extends StatelessWidget {
                   SizedBox(),
                   TextButton(
                     child: Text(
-                      'Crear una nueva cuenta',
+                      'You have account?',
                       style: TextStyle(fontSize: 18, color: Colors.black87),
                     ),
                     style: ButtonStyle(
@@ -64,7 +66,7 @@ class RegisterPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pop(context);
+                      router.pushReplacementNamed(Routes.LOGIN);
                       // router.pushNamedAndRemoveUntil(Routes.LOGIN);
                     },
                   ),
@@ -162,18 +164,20 @@ class _RegisterForm extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.topRight,
-                          stops: [
-                            0.1,
-                            0.80,
-                          ],
-                          colors: [
-                            HexColor('00ff00'),
-                            HexColor('05d0ae'),
-                          ])),
+                    borderRadius: BorderRadius.circular(10),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.topRight,
+                      stops: [
+                        0.1,
+                        0.80,
+                      ],
+                      colors: [
+                        HexColor('00ff00'),
+                        HexColor('05d0ae'),
+                      ],
+                    ),
+                  ),
                   child: MaterialButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
